@@ -6,7 +6,7 @@ use App\Models\Models\ModelBook;
 use Illuminate\Http\Request;
 use App\Models\User;
 
-class HomeController extends Controller
+class BookController extends Controller
 {
 
     private $objUser;
@@ -22,7 +22,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view(view:'home');
+        $books = $this->objBook->all();
+        return view('home', compact('books'));
     }
 
     /**
@@ -46,7 +47,8 @@ class HomeController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $book = $this->objBook->find($id);
+        return view('show', compact('book'));
     }
 
     /**
