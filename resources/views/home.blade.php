@@ -23,8 +23,8 @@
         <?php foreach($books as $book){ 
                 $user = $book->find($book->id_user)->relUsers;
                 $getBookById = url("books/".$book->id);
-                $postBookById = url("books/".$book->id);
-                $deleteBookById = url("books/".$book->id);
+                $editBookById = url("books/".$book->id . '/edit');
+                $deleteBookById = url("book/".$book->id);
             ?>
             <tr>
                 <th scope="row"><?= $book->id;?></th>
@@ -35,7 +35,7 @@
                     <a href="<?= $getBookById;?>">
                         <button class="btn btn-dark">Visualizar</button>
                     </a>
-                    <a href="<?= $postBookById;?>">
+                    <a href="<?= $editBookById;?>">
                         <button class="btn btn-primary">Editar</button>
                     </a>
                     <a href="<?= $deleteBookById;?>">

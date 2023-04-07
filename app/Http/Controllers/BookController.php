@@ -68,7 +68,10 @@ class BookController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $book = $this->objBook->find($id);
+        $users = $this->objUser->all();
+
+        return view('create', compact('book', 'users'));
     }
 
     /**
@@ -76,7 +79,18 @@ class BookController extends Controller
      */
     public function update(BookRequest $request, string $id)
     {
-        //
+        $book = $this->objBook->find($id);
+
+        $update = $this->objBook->where(['id' => $id])->update([
+            'title'     => $request->title,
+            'price'     => $request->price,
+            'pages'     => $request->pages,
+            'id_user'   => $request->id_user
+        ]);
+
+        if($update){
+            return redirect('books');
+        }
     }
 
     /**
@@ -84,6 +98,11 @@ class BookController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $book = $this->objBook->find($id);
+        $destroy = $book->delete();
+
+        if($destroy){
+            return redirect('books');
+        }
     }
 }

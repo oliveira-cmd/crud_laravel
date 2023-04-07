@@ -18,4 +18,6 @@ Route::get('/books', [BookController::class, 'index']);
 Route::get('/books/{id}', [BookController::class, 'show']);
 Route::get('/cadastrar', [BookController::class, 'create']);
 Route::post('/books', [BookController::class, 'store']);
-
+Route::get('/books/{id}/edit', [BookController::class, 'edit']);
+Route::get('/book/{id}', [BookController::class, 'destroy']);
+Route::post('/book/{id}/update', [BookController::class, 'update']);
