@@ -1,7 +1,10 @@
 @extends('templates.template')
 @section('content')
+<?php
+    $createBook = url("cadastrar");
+?>
 <div class="text-center mt-3 mb-4">
-    <a href="">
+    <a href="<?= $createBook;?>">
         <button class="btn btn-success">Cadastrar</button>
     </a>
 </div>

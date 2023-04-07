@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\BookRequest;
 use App\Models\Models\ModelBook;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -31,15 +32,26 @@ class BookController extends Controller
      */
     public function create()
     {
-        //
+        $users = $this->objUser->all();
+        return view('create', compact('users'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(BookRequest $request)
     {
-        //
+        $cadasto = $this->objBook->create([
+            'title'     => $request->title,
+            'pages'     => $request->pages,
+            'price'     => $request->price,
+            'id_user'   => $request->id_user   
+        ]);
+
+        if($cadasto){
+            return redirect('books');
+        }
+
     }
 
     /**
@@ -62,7 +74,7 @@ class BookController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(BookRequest $request, string $id)
     {
         //
     }

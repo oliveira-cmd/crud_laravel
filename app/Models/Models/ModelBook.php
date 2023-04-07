@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ModelBook extends Model
 {
     protected $table = 'book';
+    protected $fillable = ['title', 'pages', 'price', 'id_user'];
     use HasFactory;
 
     public function relUsers(){
